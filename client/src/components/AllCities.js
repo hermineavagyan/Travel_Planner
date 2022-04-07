@@ -100,8 +100,4 @@ const AllCities = (props) => {
         </div>
     )
 }
-
-
-
-
 export default AllCities;
