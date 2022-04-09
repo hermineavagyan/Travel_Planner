@@ -6,9 +6,22 @@ import AllCities from './components/AllCities';
 import NewCity from './components/NewCity';
 import EditCity from './components/EditCity';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {useState, useEffect} from "react";
+import io from 'socket.io-client'
 
 
 function App() {
+
+  const [socket, setSocket] = useState(()=> io(":8000"))
+
+  useEffect(()=>{
+    socket.on("connect", ()=>{
+      console.log("socket in the client: ", socket.id)
+    })
+
+    return () => socket.disconnect(true);
+
+  }, [])
 
 
   return (
@@ -23,7 +36,7 @@ function App() {
           <Route element={<AllCities/>} path="/home" />
           <Route element={<NewCity />} path="/new" />
           {/* This id param will be used and sent as a req.param in our request to the server! */}
-          <Route element={<OneCity />} path="/city/:id" />
+          <Route element={<OneCity  socket={socket} />} path="/city/:id" />
           <Route element={<EditCity />} path="/city/edit/:id" />
           <Route element={<Profile />} path="/user/profile/:username" />
         </Routes>

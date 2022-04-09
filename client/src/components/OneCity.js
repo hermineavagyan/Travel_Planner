@@ -7,7 +7,10 @@ import DeleteButton from "./DeleteButton";
 
 
 const OneCity = (props) => {
+    const {socket} = props;
     const [city, setCity] = useState({});
+    const [messageList, setMessageList] = useState([])
+    const [content, setContent] = useState("");
 
     const navigate = useNavigate();
     const {id} = useParams();
@@ -18,11 +21,64 @@ const OneCity = (props) => {
                 console.log(res);
                 console.log(res.data);
                 setCity(res.data)
+                setMessageList(res.data.messages)
             })
             .catch((err)=>{
                 console.log(err)
             })
     }, [id])
+
+    const addAMessage = (e) => {
+        e.preventDefault()
+        
+        axios.post("http://localhost:8000/api/messages/" + id,
+        
+            {
+                content, // content:content
+                associatedCity: id
+            })
+            .then((res) => {
+                console.log(res.data);
+                //setMessageList([res.data, ...messageList ])
+                setMessageList([...messageList, res.data,  ])
+                setContent("")
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+    
+
+    
+    useEffect(() => {
+        socket.on("Update_chat_likes", (data) => {
+            console.log("our socket updated list", data)
+            setMessageList(data)
+        })
+    }, [])
+
+
+    const likeMessage = (messageFromBelow, e) => {
+        e.preventDefault();
+        axios.put(`http://localhost:8000/api/messages/${messageFromBelow._id}`,
+            {
+                likes: messageFromBelow.likes + 1
+            }
+        )
+            .then((res) => {
+                console.log(res.data);
+
+                let updatedMessageList = messageList.map((message, index) => {
+                    if (message === messageFromBelow) {
+                        let messageHolder = { ...res.data };
+                        return messageHolder;
+                    }
+                    return message;
+                })
+                // setMessageList(updatedMessageList);
+                socket.emit("Update_chat", updatedMessageList)
+            })
+        }
 
     const deleteOneCity = ()=>{
         axios.delete(`http://localhost:8000/api/cities/${id}`)
@@ -35,6 +91,8 @@ const OneCity = (props) => {
             .catch((err) => console.log(err))
     }
 
+    
+
 
 
     return (
@@ -42,7 +100,7 @@ const OneCity = (props) => {
             <Header 
             appName = {"NoTerraIncognita"}
             titleText = {city.name}
-            link={"/"}
+            link={"/home"}
             linkText={"Home"}
             />
 
@@ -61,13 +119,29 @@ const OneCity = (props) => {
                 }
             </div>
             <DeleteButton deleteHandler={deleteOneCity}/>
+
+            <div>
+
+<input type="text" value={content} onChange={(e) => setContent(e.target.value)} />
+
+<button onClick={addAMessage}>Add message</button>
+
+{
+    messageList ?
+        messageList.map((message, index) => (
+            <div key={index}>
+                <p>{message.content}</p>
+                <button onClick={(e) => likeMessage(message,e)}>Like {message.likes}</button>
+            </div>
+        ))
+        : null
+}
+
+</div>
+
         
         </div> 
     )
 }
-
-
-
-
 export default OneCity;
 

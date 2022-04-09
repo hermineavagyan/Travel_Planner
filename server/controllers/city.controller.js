@@ -5,8 +5,11 @@ const jwt = require ("jsonwebtoken")
 
         findAllCities: (req, res)=>{
             City.find({})
+            
                 .populate("createdBy", "username email")
+                .populate("messages", "content likes _id")
                 .then((allCities)=>{
+                    
                     console.log(allCities);
                     res.json(allCities)
                 })
@@ -46,6 +49,7 @@ const jwt = require ("jsonwebtoken")
 
         findOneCity: (req, res)=>{
             City.findOne({ _id: req.params.id })//the params id MUST MATCH how we write it in our routes!!!
+                .populate("messages", "content likes")
                 .then((oneCity)=>{
                     console.log(oneCity);
                     res.json(oneCity);
