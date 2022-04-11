@@ -8,6 +8,7 @@ import EditCity from './components/EditCity';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {useState, useEffect} from "react";
 import io from 'socket.io-client'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 function App() {
@@ -25,12 +26,11 @@ function App() {
 
 
   return (
-
+    
     <BrowserRouter>
+    
       
       <div className="App">
-        {/* We must set up our Route component's  
-      inside of the Routes component from react-router-dom  */}
         <Routes>
           <Route element={<LogReg/>} path="/" />
           <Route element={<AllCities/>} path="/home" />
@@ -42,7 +42,9 @@ function App() {
         </Routes>
       
       </div>
+    
     </BrowserRouter>
+    
   );
 }
 

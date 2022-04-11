@@ -34,32 +34,37 @@ const Login = (props) => {
     };
 
     return (
-        <div>
-            <h1>Login</h1>
+        <div class="card border-light text-dark bg-light m-5">
+        <div class="card-body">
+        <div class="mb-3 row">
+        <div class="card-header">Login</div>
+            
             <p className="error-text">{errorMessage ? errorMessage : ""}</p>
             <form onSubmit={login}>
                 <div>
-                    <label>Email</label>
-                    <input
+                    <label for = "inputEmail" class="col-sm-2 col-form-label">Email</label>
+                    <input class="col-sm-5"
                         type="text"
                         name="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
-                <div>
-                    <label>Password</label>
-                    <input
+                <div class="mb-3">
+                    <label for = "inputPassword" class="col-sm-2 col-form-label">Password</label>
+                    <input class="col-sm-5"
                         type="password"
                         name="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
+                    
                 </div>
-                <div className="center">
-                    <button>Sign In</button>
-                </div>
+                <button type="submit" class="btn btn-success">Log in</button>
+                <div id="emailHelp" class="form-text">Don't have an account yet? Register below</div>
             </form>
+        </div>
+        </div>
         </div>
     );
 };

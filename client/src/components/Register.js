@@ -56,19 +56,21 @@ const Register = (props) => {
 
 
     return (
-        <div>
-
-            <h1>Register</h1>
+        <div class="card border-light text-dark bg-light m-5">
+        <div class="card-body">
+        <div class="mb-3 row">
+        <div class="card-header">Register</div>
             {confirmReg ? <h4 style={{ color: "green" }}>{confirmReg}</h4> : null}
             <form onSubmit={register}>
                 <div>
-                    <label>Username</label>
-                    {errors.username ? (
-                        <span className="error-text">
+                {errors.username ? (
+                        <p className="error-text">
                             {errors.username.message}
-                        </span>
+                        </p>
                     ) : null}
-                    <input
+                    <label class="col-sm-2 col-form-label">Username</label>
+                    
+                    <input class="col-sm-5"
                         type="text"
                         name="username"
                         value={user.username}
@@ -77,11 +79,12 @@ const Register = (props) => {
                     />
                 </div>
                 <div>
-                    <label>Email</label>
-                    {errors.email ? (
-                        <span className="error-text">{errors.email.message}</span>
+                {errors.email ? (
+                        <p className="error-text">{errors.email.message}</p>
                     ) : null}
-                    <input
+                    <label class="col-sm-2 col-form-label">Email</label>
+                    
+                    <input class="col-sm-5"
                         type="email"
                         name="email"
                         value={user.email}
@@ -89,37 +92,39 @@ const Register = (props) => {
                     />
                 </div>
                 <div>
-                    <label>Password</label>
-                    {errors.password ? (
-                        <span className="error-text">
+                {errors.password ? (
+                        <p className="error-text">
                             {errors.password.message}
-                        </span>
+                        </p>
                     ) : null}
-                    <input
-                        type="password"
-                        name="password"
-                        value={user.password}
-                        onChange={handleChange}
+                    <label class="col-sm-2 col-form-label">Password</label>
+                    
+                    <input class="col-sm-5"
+                        type="password" name="password" value={user.password} onChange={handleChange}
                     />
                 </div>
                 <div>
-                    <label>Confirm Password</label>
-                    {errors.confirmPassword ? (
-                        <span className="error-text">
-                            {errors.confirmPassword.message}
-                        </span>
+                {errors.confirmPassword ? (
+                        <p className="error-text">
+                        {errors.confirmPassword.message}
+                        </p>
                     ) : null}
-                    <input
+                    <label for = "inputPassword" class="col-sm-2 col-form-label">Confirm</label>
+                    
+                    <input class="col-sm-5"
                         type="password"
                         name="confirmPassword"
                         value={user.confirmPassword}
                         onChange={handleChange}
                     />
                 </div>
-                <div className="center">
-                    <button>Register Me</button>
-                </div>
+                {/* <div className="center"> */}
+                <button type="submit" class="btn btn-primary">Register</button>
+                <div id="emailHelp" class="form-text">Already registered? Login above</div>
+                {/* </div> */}
             </form>
+        </div>
+        </div>
         </div>
     )
 }
