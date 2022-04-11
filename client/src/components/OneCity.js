@@ -36,7 +36,7 @@ const OneCity = (props) => {
             {
                 content, // content:content
                 associatedCity: id
-            })
+            }, {withCredentials: true})
             .then((res) => {
                 console.log(res.data);
                 //setMessageList([res.data, ...messageList ])

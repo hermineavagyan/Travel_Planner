@@ -1,5 +1,6 @@
 const Message = require('../models/message.model');
 const City = require('../models/city.model');
+const jwt = require ("jsonwebtoken")
 
 module.exports = {
 
@@ -18,7 +19,11 @@ module.exports = {
 
     createNewMessage:  (req, res)=>{
 
-        Message.create(req.body)
+            const newMessageObject = new Message(req.body)
+            const decodedJWT = jwt.decode(req.cookies.usertoken, {complete: true})
+
+            newMessageObject.createdBy = decodedJWT.payload.id;
+            newMessageObject.save()
             .then((messagePosted)=>{
                 console.log(messagePosted);
                 

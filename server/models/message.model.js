@@ -12,7 +12,11 @@ const MessageSchema = new mongoose.Schema({
     associatedCity: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "City"
-    }
+    },
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
 
 
 }, {timestamps:true})

@@ -7,21 +7,25 @@ const LogReg = (props) => {
 
 
     return (
-        <div >
-      <Typewriter
-  
-  onInit={(typewriter)=> {
-
-  typewriter
-   
-  .typeString("NoTerraIncognita")
-    
-  .pauseFor(1000)
-  .deleteAll()
-  .typeString("Welcomes You")
-  .start();
-  }}
-  />
+        <div>
+            <span style = {{color: '#3EAAA7', fontWeight: '700', fontSize: "30px"}}>
+                <Typewriter 
+                    // options={{
+                    // autoStart: true,
+                    // delay: 75,
+                    // loop: true,
+                    // }} 
+                    onInit={(typewriter)=> {
+                    typewriter
+                    .typeString("NoTerraIncognita")
+                    .pauseFor(1000)
+                    .deleteAll()
+                    .typeString("Welcomes You")
+                    .start();
+                    }}
+                />
+               
+            </span>
             <Login />
             <Register />
         </div>
