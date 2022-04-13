@@ -11,10 +11,11 @@ const NewCity = (props) => {
     const [newCity, setNewCity] = useState({
         name: "",
         country: "",
-        weather: "",
+        funFact: "",
         cityImage: "",
-        petFriendly: false,
-        yearBuilt: ""
+        petFriendly: false
+        // messages: {},
+        // createdBy: {}
     },
    
     )

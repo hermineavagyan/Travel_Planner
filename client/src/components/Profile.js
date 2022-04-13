@@ -25,10 +25,13 @@ const Profile = (props) => {
     
     }, [])
     
-
+    
     return (
         <div style={{ textAlign: "center" }}>
         <h1>Welcome {username}</h1>
+      
+       
+
 
         {
             userCityList.map((city, index) => (
@@ -38,8 +41,8 @@ const Profile = (props) => {
                     <p>The weather: {city.weather}</p>
                 </div>
             ))
-        }
-        
+        } 
+      
     </div>
     )
 }

@@ -36,6 +36,7 @@ module.exports = {
                         useFindAndModify: true
                     })
                     .populate("messages", "content _id")
+                   //.populate("messages", "createdBy")
                     .then((cityToUpdate)=>{
                         console.log(cityToUpdate);
                         res.json(messagePosted)

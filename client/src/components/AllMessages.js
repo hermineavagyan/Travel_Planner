@@ -6,7 +6,7 @@ import DeleteButton from "./DeleteButton";
 
 
 
-const OneCity = (props) => {
+const AllMessages = (props) => {
     //const [createdBy, setCreatedBy] = useState({});
     const {socket} = props;
     const [city, setCity] = useState({});
@@ -81,16 +81,16 @@ const OneCity = (props) => {
             })
         }
 
-    const deleteOneCity = ()=>{
-        axios.delete(`http://localhost:8000/api/cities/${id}`)
-            .then((res) => {
-                console.log(res);
-                console.log(res.data);
-                navigate("/")
+    // const deleteOneCity = ()=>{
+    //     axios.delete(`http://localhost:8000/api/cities/${id}`)
+    //         .then((res) => {
+    //             console.log(res);
+    //             console.log(res.data);
+    //             navigate("/")
                 
-            })
-            .catch((err) => console.log(err))
-    }
+    //         })
+    //         .catch((err) => console.log(err))
+    // }
 
     
 
@@ -105,30 +105,12 @@ const OneCity = (props) => {
             linkText={"Home"}
             />
 
-                <p>{city.country}</p>
-            <img src={city.cityImage} style={{ width: "150px", height: "150px" }}/>
-            <p>{city.country}</p>
-            
-            <p>{city.weather}</p>
-            <p>This city is built in {city.yearBuilt}</p>
+                <p>Reviews for the city</p>
 
-            <div>Pet Friendly
-                {
-                    city.petFriendly?
-                    <p>Okay for pets!!!</p>
-                    :<p>Don't torture your pets taking them there!!!!!!</p>
-                }
-            </div>
-            <DeleteButton deleteHandler={deleteOneCity}/>
-            <Link  to={`/city/${city._id}/${city.name}`}> Read the reviews</Link>
+    
 
             <div>
-
-<input type="text" value={content} onChange={(e) => setContent(e.target.value)} />
-
-<button onClick={addAMessage}>Add message</button>
-
-{
+            {
     messageList ?
         messageList.map((message, index) => (
             <div key={index}>
@@ -140,11 +122,17 @@ const OneCity = (props) => {
         : null
 }
 
+<input type="text" value={content} onChange={(e) => setContent(e.target.value)} />
+
+<button onClick={addAMessage}>Add message</button>
+
+
+
 </div>
 
         
         </div> 
     )
 }
-export default OneCity;
+export default AllMessages;
 

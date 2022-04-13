@@ -13,21 +13,24 @@ const CitySchema = new mongoose.Schema({
         type: String,
         required: [true, "A city's country is required!!!"],
     },
-
-    weather:{
+    funFact: {
         type: String,
-        //An enum will require this field's value in the request to 
-        //include one of these values EXACTLY as typed here
-        //required: [true, "A city's weather is required!!!"],
-        enum:[
-            "Windy",
-            "Snowy",
-            "Rainy",
-            "Jungle",
-            "Sunny"
-            
-        ]
+        required: [true, "Tell us something interesting about this city!!!"],
     },
+
+    // weather:{
+    //     type: String,
+
+    //     //required: [true, "A city's weather is required!!!"],
+    //     enum:[
+    //         "Windy",
+    //         "Snowy",
+    //         "Rainy",
+    //         "Jungle",
+    //         "Sunny"
+            
+    //     ]
+    // },
 
 
     cityImage: { //this will be the url of image from internet
@@ -42,10 +45,10 @@ const CitySchema = new mongoose.Schema({
         //required:[true, "Need to know if this city's good for pets!!!"]
     },
 
-    yearBuilt:{
-        type: Number,
-        min:[50, "We dont like old cities"]
-    },
+    // yearBuilt:{
+    //     type: Number,
+    //     min:[50, "We dont like old cities"]
+    // },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"

@@ -49,7 +49,16 @@ const jwt = require ("jsonwebtoken")
 
         findOneCity: (req, res)=>{
             City.findOne({ _id: req.params.id })//the params id MUST MATCH how we write it in our routes!!!
-                .populate("messages", "content likes")
+                //.populate("messages", "content likes")
+                .populate({
+                    path: "messages",
+                    populate: {
+                        path: "createdBy",
+                        select: 'username'
+                    }
+                })
+                
+
                 .then((oneCity)=>{
                     console.log(oneCity);
                     res.json(oneCity);
@@ -110,6 +119,7 @@ const jwt = require ("jsonwebtoken")
                 console.log("current user")
                 console.log("req.jwtpayload.id:", req.jwtpayload.id);
                 City.find({ createdBy: req.jwtpayload.id })
+                 
                     .populate("createdBy", "username")
                     .then((allCitiesFromLoggedInUser) => {
                         console.log(allCitiesFromLoggedInUser);
@@ -121,7 +131,20 @@ const jwt = require ("jsonwebtoken")
                     })
             }
 
-        }
+        },
+        // likeCity: (req, res) => {
+        //     City.findOneAndUpdate({ _id: req.params.id },
+        //         req.body,
+        //         { new: true, runValidators: true }
+        //     )
+        //         .populate("createdBy", "username")
+        //         .then((likeAdded) => {
+        //             res.json(likeAdded)
+        //         })
+        //         .catch((err) => {
+        //             res.status(400).json(err);
+        //         })
+        // }
 
 
 

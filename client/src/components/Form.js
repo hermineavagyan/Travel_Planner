@@ -28,8 +28,18 @@ const Form = (props)=>{
                             : null
                     }
                 </div>
-
                 <div>
+                    <label>Fun Fact</label>
+                    <input name="funFact" value={city.funFact} onChange={(e) => onChangeHandler(e)} type="text" />
+                    <br />
+                    {
+                        errors.funFact ?
+                            <span>{errors.funFact.message}</span>
+                            : null
+                    }
+                </div>
+
+                {/* <div>
                     <label>Weather</label>
                     <select value={city.weather} name="weather" onChange={onChangeHandler} >
                         <option defaultValue hidden>Select a Weather condition </option>
@@ -45,7 +55,7 @@ const Form = (props)=>{
                             <span>{errors.weather.message}</span>
                             : null
                     }
-                </div>
+                </div> */}
 
                 <div>
                     <label>City Image</label>
@@ -68,7 +78,7 @@ const Form = (props)=>{
                             : null
                     }
                 </div>
-                <div>
+                {/* <div>
                     <label>Year Built</label>
                     <input name="yearBuilt" value={city.yearBuilt} onChange={onChangeHandler} type="number" />
                     <br />
@@ -77,7 +87,7 @@ const Form = (props)=>{
                             <span>{errors.yearBuilt.message}</span>
                             : null
                     }
-                </div>
+                </div> */}
 
                 <button>{buttonText}</button>
 
