@@ -5,7 +5,7 @@ const DeleteButton = (props)=>{
     const {deleteHandler} = props;
 
     return(
-        <button onClick={deleteHandler}>Delete</button>
+        <button style = {{marginRight: 10}} class="btn btn-secondary btn-sm" onClick={deleteHandler}>Delete</button>
     )
 }
 

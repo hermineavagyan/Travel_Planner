@@ -6,6 +6,7 @@ import AllCities from './components/AllCities';
 import NewCity from './components/NewCity';
 import EditCity from './components/EditCity';
 import AllMessages from './components/AllMessages';
+import MoreInfo from './components/MoreInfo';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {useState, useEffect} from "react";
 import io from 'socket.io-client'
@@ -41,7 +42,7 @@ function App() {
           <Route element={<EditCity />} path="/city/edit/:id" />
           <Route element={<Profile />} path="/user/profile/:username" />
           <Route element={<AllMessages socket={socket}/>} path="/city/:id/:name" />
-
+          <Route path = "/country/:countryName" element = {<MoreInfo/>}></Route>
         </Routes>
       
       </div>

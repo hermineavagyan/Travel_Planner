@@ -27,6 +27,7 @@ const Navbar = (props) => {
         background-color: lightgrey;
         border-radius: 5%;
         margin-left: 20px;
+        margin-bottom: 20px;
         border: 1px solid black;
         padding: 5px 10px;
         `;
@@ -40,7 +41,7 @@ const {home,hText, profile,pText, logout,lText, addNew, addNewText} = props
             <StyledLink to={profile} activeStyle>{pText}</StyledLink>      
         </Div> 
         <Button> 
-        <Link  to={logout}> {lText}</Link> 
+        <Link style = {{color: "#000000"}}  to={logout}> {lText}</Link> 
         </Button> 
     
     </div>

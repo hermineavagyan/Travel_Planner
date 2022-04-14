@@ -40,8 +40,8 @@ const OneCity = (props) => {
             }, {withCredentials: true})
             .then((res) => {
                 console.log(res.data);
-                //setMessageList([res.data, ...messageList ])
-                setMessageList([...messageList, res.data,  ])
+                setMessageList([res.data, ...messageList ])
+                //setMessageList([...messageList, res.data,  ])
                 setContent("")
             })
             .catch((err) => {
@@ -91,6 +91,16 @@ const OneCity = (props) => {
             })
             .catch((err) => console.log(err))
     }
+    // const deleteOneMessage = (idFromBelow)=>{
+    //     axios.delete(`http://localhost:8000/api/messages/${idFromBelow}`)
+    //         .then((res)=>{
+    //             console.log(res);
+    //             console.log(res.data);
+    //             setMessageList(messageList.filter(message => message.id !== idFromBelow))
+                
+    //         })
+    //         .catch((err)=>console.log(err))
+    // }
 
     
 
@@ -100,50 +110,75 @@ const OneCity = (props) => {
         <div>
             <Header 
             appName = {"NoTerraIncognita"}
-            titleText = {city.name}
+            // titleText = {city.name}
+            titleText = ""
             link={"/home"}
             linkText={"Home"}
             />
-
-                <p>{city.country}</p>
+            {/* <p>{city.name},<Link to={`/country/${city.country}`}>{city.country}</Link> </p>
+        
             <img src={city.cityImage} style={{ width: "150px", height: "150px" }}/>
-            <p>{city.country}</p>
-            
-            <p>{city.weather}</p>
-            <p>This city is built in {city.yearBuilt}</p>
-
-            <div>Pet Friendly
+            <div>
                 {
-                    city.petFriendly?
+                   city.petFriendly?
                     <p>Okay for pets!!!</p>
                     :<p>Don't torture your pets taking them there!!!!!!</p>
                 }
-            </div>
-            <DeleteButton deleteHandler={deleteOneCity}/>
+
+                <DeleteButton deleteHandler={deleteOneCity}/>
             <Link  to={`/city/${city._id}/${city.name}`}> Read the reviews</Link>
+            <Link to = {`/user/profile/${city.createdBy?.username}`}>{city.createdBy?.username}</Link>
+            </div>
+               */}
+            
+                
+                <div class="card border-light text-dark bg-light mx-5 my-3">
+        
+                        
+                        <Link class="card-header," to={`/city/${city._id}`}> {city.name}</Link>
+                        <p>This city is in <Link to={`/country/${city.country}`}>{city.country}</Link> </p>
+                        <img class="card-body" src={city.cityImage} style={{ width: "350px", height: "250px" }} />
+                        {
+                  city.petFriendly?
+                    <p class="text-right">Okay for pets!!!</p>
+                    :<p class="text-right">Don't torture your pets taking them there!!!!!!</p>
+                }
+               
+                       
+                        <p>
+                        <DeleteButton deleteHandler={deleteOneCity}/>
+                        <Link to={`/city/edit/${id}`}><button type="button" class="btn btn-secondary btn-sm">Edit</button></Link></p>
+               
+                </div>
+
+            
+
+            
 
             <div>
 
-<input type="text" value={content} onChange={(e) => setContent(e.target.value)} />
 
-<button onClick={addAMessage}>Add message</button>
 
 {
     messageList ?
         messageList.map((message, index) => (
             <div key={index}>
                 <p>{message.content}</p>
-                <p>{message.associatedCity.username}</p>
+                {/* <p>{message.associatedCity.createdBy}</p>  */}
                 <button onClick={(e) => likeMessage(message,e)}>Like {message.likes}</button>
+                {/* <DeleteButton deleteHandler={deleteOneMessage}/> */}
             </div>
         ))
         : null
 }
 
 </div>
+<input type="text" value={content} onChange={(e) => setContent(e.target.value)} />
 
-        
-        </div> 
+<button onClick={addAMessage}>Add message</button>
+</div>
+
+
     )
 }
 export default OneCity;

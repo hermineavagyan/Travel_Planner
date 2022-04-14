@@ -16,6 +16,18 @@ module.exports = {
                 res.json({ message: "Something went wrong in findAll", error: err })
             })
     },
+    // deleteOneMessage: (req, res)=>{
+    //    Message.deleteOne({_id: req.params.id})
+    //    console.log(req.params.id)
+    //         .then((deletedMessage)=>{
+    //             console.log(deletedMessage);
+    //             res.json(deletedMessage);
+    //         })
+    //         .catch((err)=>{
+    //             console.log("deleteOneMessage() failed");
+    //             res.json({ message: "Something went wrong in deleteOneMessage()", error: err })
+    //         })
+    // },
 
     createNewMessage:  (req, res)=>{
 
