@@ -17,10 +17,10 @@ module.exports = {
             })
     },
     // deleteOneMessage: (req, res)=>{
-    //    Message.deleteOne({_id: req.params.id})
-    //    console.log(req.params.id)
+    //    Message.deleteOne({name: req.params.name})
+    //    console.log(req.params.name)
     //         .then((deletedMessage)=>{
-    //             console.log(deletedMessage);
+    //             console.log(deletedMessage); 
     //             res.json(deletedMessage);
     //         })
     //         .catch((err)=>{

@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "./Header";
+import Navbar from "./Navbar";
 import DeleteButton from "./DeleteButton";
-
-
 
 const OneCity = (props) => {
     //const [createdBy, setCreatedBy] = useState({});
@@ -48,16 +47,13 @@ const OneCity = (props) => {
                 console.log(err);
             })
     }
-    
 
-    
     useEffect(() => {
         socket.on("Update_chat_likes", (data) => {
             console.log("our socket updated list", data)
             setMessageList(data)
         })
     }, [])
-
 
     const likeMessage = (messageFromBelow, e) => {
         e.preventDefault();
@@ -102,10 +98,6 @@ const OneCity = (props) => {
     //         .catch((err)=>console.log(err))
     // }
 
-    
-
-
-
     return (
         <div>
             <Header 
@@ -115,6 +107,16 @@ const OneCity = (props) => {
             link={"/home"}
             linkText={"Home"}
             />
+              <Navbar
+            home = {"/home"}
+            hText = {"Home"}
+            profile = {"`/user/profile/${user.username}`"}
+            pText = {""} 
+            addNew = {"/new"}          
+            addNewText = {"Didn't like what we have? Create yours!"}
+            logout = {"/"}
+            lText = {"Logout"}
+        />
             {/* <p>{city.name},<Link to={`/country/${city.country}`}>{city.country}</Link> </p>
         
             <img src={city.cityImage} style={{ width: "150px", height: "150px" }}/>
@@ -126,59 +128,90 @@ const OneCity = (props) => {
                 }
 
                 <DeleteButton deleteHandler={deleteOneCity}/>
+                 <DeleteButton deleteHandler={deleteOneMessage}/>
             <Link  to={`/city/${city._id}/${city.name}`}> Read the reviews</Link>
-            <Link to = {`/user/profile/${city.createdBy?.username}`}>{city.createdBy?.username}</Link>
+           
             </div>
                */}
-            
-                
                 <div class="card border-light text-dark bg-light mx-5 my-3">
-        
-                        
                         <Link class="card-header," to={`/city/${city._id}`}> {city.name}</Link>
+                        <div className="cityInfo">
                         <p>This city is in <Link to={`/country/${city.country}`}>{city.country}</Link> </p>
-                        <img class="card-body" src={city.cityImage} style={{ width: "350px", height: "250px" }} />
+                        <p> <Link to = {`/user/profile/${city.createdBy?.username}`}>{city.createdBy?.username}</Link></p>
+
+                        </div>
+                        <div class="clearfix">
+  <img src={city.cityImage} class="col-md-6 float-md-end mb-3 ms-md-3" alt="..."/>
+
+  <p>
+{city.funFact}
+  </p>
+
+  <p>
+    As you can see the paragraphs gracefully wrap around the floated image. Now imagine how this would look with some actual content in here, rather than just this boring placeholder text that goes on and on, but actually conveys no tangible information at. It simply takes up space and should not really be read.
+  </p>
+
+  <p>
+    This city is the capital of <Link to={`/country/${city.country}`}>{city.country}</Link>. Do you want to know more about this city's country? Click on the country name
+  </p>
+</div>
+                        
+                        {/* <img  class="card-body" src={city.cityImage} style={{ width: "350px", height: "250px", marginLeft: "50px"}} /> */}
                         {
                   city.petFriendly?
                     <p class="text-right">Okay for pets!!!</p>
                     :<p class="text-right">Don't torture your pets taking them there!!!!!!</p>
                 }
-               
-                       
                         <p>
                         <DeleteButton deleteHandler={deleteOneCity}/>
                         <Link to={`/city/edit/${id}`}><button type="button" class="btn btn-secondary btn-sm">Edit</button></Link></p>
                
                 </div>
+               
 
-            
-
-            
-
+               
+                <div>
+                
+                
             <div>
 
+                {
+                    messageList ?
+                        messageList.map((message, index) => (
+                            
+                            <div className="review" key={index}>
+                                <div className="reviewDiv">{message.content}</div>
+                                <div className="reviewDiv">{message.likes} likes</div>
+                               
+                                <div className="reviewDiv"><button class="btn btn-success" onClick={(e) => likeMessage(message,e)}>Like this review</button></div>
+                                {/* <DeleteButton deleteHandler={deleteOneMessage}/> */}
+                                
+                                
+                    
 
-
-{
-    messageList ?
-        messageList.map((message, index) => (
-            <div key={index}>
-                <p>{message.content}</p>
-                {/* <p>{message.associatedCity.createdBy}</p>  */}
-                <button onClick={(e) => likeMessage(message,e)}>Like {message.likes}</button>
-                {/* <DeleteButton deleteHandler={deleteOneMessage}/> */}
+                                {/* <DeleteButton deleteHandler={deleteOneMessage}/> */}
+                            </div>
+                            
+                            
+                        ))
+                        
+                        : null        
+                }
+                
             </div>
-        ))
-        : null
-}
-
-</div>
-<input type="text" value={content} onChange={(e) => setContent(e.target.value)} />
-
-<button onClick={addAMessage}>Add message</button>
-</div>
-
-
+            
+            <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Want to leave a review for this city?</h5>
+                <p class="card-text"><input type="text" value={content} onChange={(e) => setContent(e.target.value)} /></p>
+                <button  class="btn btn-primary" onClick={addAMessage}>Add Review</button>
+            </div>
+            <div class="card-footer text-muted">
+            
+            </div>
+            </div>
+    </div>
+    </div>
     )
 }
 export default OneCity;

@@ -125,6 +125,7 @@ const AllCities = (props) => {
     <div class="col-md-8">
       <div class="card-body">
         <h3 class="card-title"><Link style = {{color: "#000000"}} to={`/city/${city._id}`}> {city.name}</Link></h3>
+        <p> <Link to = {`/user/profile/${city.createdBy?.username}`}>{city.createdBy?.username}</Link></p>
         <h5>Did you know?</h5>
         <p class="card-text">{city.funFact} This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
        <hr style = {{margin: 40, border: 0, backgroundImage: "linear-gradient(to right, rgba(0, 0, 0, 0), rgba(9, 84, 132), rgba(0, 0, 0, 0))", height: 3}}/>

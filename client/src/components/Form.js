@@ -6,11 +6,11 @@ const Form = (props)=>{
 
     return(
         <div>
-            <form onSubmit={submitHandler}>
+            <form style = {{margin: "20%"}}  class = "form-control" onSubmit={submitHandler}>
 
                 <div>
-                    <label>Name</label>
-                    <input name="name" value={city.name} onChange={(e) => onChangeHandler(e)} type="text" />
+                    <label for="exampleFormControlInput1">Name</label>
+                    <input class="form-control" name="name" value={city.name} onChange={(e) => onChangeHandler(e)} type="text" />
                     <br />
                     {
                         errors.name ?
@@ -19,8 +19,8 @@ const Form = (props)=>{
                     }
                 </div>
                 <div>
-                    <label>Country</label>
-                    <input name="country" value={city.country} onChange={(e) => onChangeHandler(e)} type="text" />
+                    <label for="exampleFormControlInput1">Country</label>
+                    <input class="form-control" name="country" value={city.country} onChange={(e) => onChangeHandler(e)} type="text" />
                     <br />
                     {
                         errors.country ?
@@ -29,8 +29,8 @@ const Form = (props)=>{
                     }
                 </div>
                 <div>
-                    <label>Fun Fact</label>
-                    <input name="funFact" value={city.funFact} onChange={(e) => onChangeHandler(e)} type="text" />
+                    <label for="exampleFormControlInput1">Fun Fact</label>
+                    <input class="form-control" name="funFact" value={city.funFact} onChange={(e) => onChangeHandler(e)} type="text" />
                     <br />
                     {
                         errors.funFact ?
@@ -58,8 +58,8 @@ const Form = (props)=>{
                 </div> */}
 
                 <div>
-                    <label>City Image</label>
-                    <input name="cityImage" value={city.cityImage} onChange={onChangeHandler} type="text" />
+                    <label for="exampleFormControlInput1">City Image</label>
+                    <input class="form-control" name="cityImage" value={city.cityImage} onChange={onChangeHandler} type="text" />
                     <br />
                     {
                         errors.cityImage ?
@@ -69,8 +69,8 @@ const Form = (props)=>{
                 </div>
 
                 <div>
-                    <label>Pet Friendly?</label>
-                    <input checked={city.petFriendly} name="petFriendly" onChange={onChangeHandler} type="checkbox" />
+                    <label for="exampleFormControlInput1">Pet Friendly?</label>
+                    <input class="form-control" checked={city.petFriendly} name="petFriendly" onChange={onChangeHandler} type="checkbox" />
                     <br />
                     {
                         errors.petFriendly ?
