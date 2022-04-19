@@ -7,6 +7,7 @@ const CitySchema = new mongoose.Schema({
         type: String,
         required: [true, "A city's name is required!!!"],
         //maxlength and minlength are for Strings, max/min are for number types
+        minlength: [3, "The city name should be at least 3 characters"],
         maxlength: [30, "The city name's length can be no more than 30 characters!"]
     },
     country: {
@@ -16,6 +17,10 @@ const CitySchema = new mongoose.Schema({
     funFact: {
         type: String,
         required: [true, "Tell us something interesting about this city!!!"],
+    },
+    cityInfo: {
+        type: String,
+        required: [true, "Give some info about this city!!!"],
     },
 
     // weather:{
@@ -40,10 +45,10 @@ const CitySchema = new mongoose.Schema({
         //required: [true, "Because pictures make it unforgettable!!!"]
     },
 
-    petFriendly:{
-        type: Boolean,
-        //required:[true, "Need to know if this city's good for pets!!!"]
-    },
+    // petFriendly:{
+    //     type: Boolean,
+    //     //required:[true, "Need to know if this city's good for pets!!!"]
+    // },
 
     // yearBuilt:{
     //     type: Number,

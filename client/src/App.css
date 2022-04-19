@@ -9,11 +9,52 @@
   margin-left: 40px;
   
 }
-.cityInfo{
+/* .cityInfo{
   display: flex;
   justify-content:space-around;
   color:green
-}
+} */
 .reviewDiv{
   margin: 20px;
+}
+.formStyle{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  border-radius: 5%;
+  border-color: 22px solid black;
+  margin-left: 20%;
+  margin-right: 20%;
+  border-color: 5px solid black;
+}
+.appTitle{
+   display:flex;
+   justify-content:flex-end;
+   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+    font-weight: 200;
+    margin-right: 10%;
+    background-image: linear-gradient(to right, #350d3b, #9c7abe);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+.titleTextStyle{
+  display:flex;
+  justify-content:center;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+}
+.userTable{
+  width: 80%;
+  height: 100%;
+  margin-left: 85px;
+  margin-right: 10px;
+  border: 2px solid black;
+}
+.cityInfo{
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  color: black;
+  text-align:start;
 }

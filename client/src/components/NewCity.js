@@ -1,9 +1,10 @@
 //axios, useEffect, useState, Link
-import React, {useState } from "react";
+import React, {useState, useEffect } from "react";
 import axios from "axios";
 import {useNavigate } from "react-router-dom";
 import Header from "./Header";
 import Form from "./Form";
+import Navbar from "./Navbar";
 
 const NewCity = (props) => {
 
@@ -21,6 +22,7 @@ const NewCity = (props) => {
     )
 
     const [errors, setErrors] = useState({});
+    const [user, setUser] = useState({});
     const navigate = useNavigate()
 
     const newSubmitHandler = (e) => {
@@ -57,17 +59,39 @@ const NewCity = (props) => {
             setNewCity(newStateObject)
         }
     }
-
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/users",
+            { withCredentials: true }
+        )
+            .then((res) => {
+                console.log(res.data);
+                setUser(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }, [])
 
 
     return (
         <div>
             <Header
-                appName = {"NoTerraIncognita"}
-                titleText = {"Add a city"}
+                appName = {"YOUR TRAVEL PLANNER"}
+                titleText = {"CREATE YOUR CITY"}
                 link = {"/home"}
-                linkText = {"Home"}
+                linkText = {""}
             />
+            <Navbar
+            // profile = {`/user/profile/${newCity.createdBy.username}`}
+            profile = {`/user/profile/${user.username}`}
+            pText = {"User Profile"} 
+            home = {"/home"}
+            hText = {"Home"}
+            addNew = {"/new"}          
+            addNewText = {""}
+            logout = {"/"}
+            lText = {"Logout"}
+        />
 
             <Form
                 submitHandler = {newSubmitHandler}

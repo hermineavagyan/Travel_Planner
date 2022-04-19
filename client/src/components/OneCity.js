@@ -101,16 +101,17 @@ const OneCity = (props) => {
     return (
         <div>
             <Header 
-            appName = {"NoTerraIncognita"}
+            appName = {"YOUR Travel Planner"}
             // titleText = {city.name}
-            titleText = ""
+            titleText = {"Explore Your Next Dream Vacation Destination"}
             link={"/home"}
-            linkText={"Home"}
+            linkText={""}
             />
               <Navbar
             home = {"/home"}
             hText = {"Home"}
-            profile = {"`/user/profile/${user.username}`"}
+            // profile = {"`/user/profile/${city.createdBy.username}`"}
+            profile = {`/user/profile/${city.createdBy?.username}`}
             pText = {""} 
             addNew = {"/new"}          
             addNewText = {"Didn't like what we have? Create yours!"}
@@ -134,34 +135,38 @@ const OneCity = (props) => {
             </div>
                */}
                 <div class="card border-light text-dark bg-light mx-5 my-3">
-                        <Link class="card-header," to={`/city/${city._id}`}> {city.name}</Link>
+                        {/* <Link class="card-header," to={`/city/${city._id}`}> {city.name}</Link> */}
+                        <h2 class="card-header," to={`/city/${city._id}`}> {city.name}</h2>
                         <div className="cityInfo">
-                        <p>This city is in <Link to={`/country/${city.country}`}>{city.country}</Link> </p>
+                        {/* <p>This city is in <Link to={`/country/${city.country}`}>{city.country}</Link> </p> */}
                         <p> <Link to = {`/user/profile/${city.createdBy?.username}`}>{city.createdBy?.username}</Link></p>
 
                         </div>
                         <div class="clearfix">
   <img src={city.cityImage} class="col-md-6 float-md-end mb-3 ms-md-3" alt="..."/>
-
+<div className = "cityInfo">
   <p>
 {city.funFact}
   </p>
 
   <p>
-    As you can see the paragraphs gracefully wrap around the floated image. Now imagine how this would look with some actual content in here, rather than just this boring placeholder text that goes on and on, but actually conveys no tangible information at. It simply takes up space and should not really be read.
+    {city.cityInfo}
   </p>
 
+ 
+  </div>
   <p>
-    This city is the capital of <Link to={`/country/${city.country}`}>{city.country}</Link>. Do you want to know more about this city's country? Click on the country name
+    This city is the capital of <Link to={`/country/${city.country}`}>{city.country}</Link>. 
+    Want to know more about this city's country? Click on the country name
   </p>
 </div>
                         
                         {/* <img  class="card-body" src={city.cityImage} style={{ width: "350px", height: "250px", marginLeft: "50px"}} /> */}
-                        {
+                        {/* {
                   city.petFriendly?
                     <p class="text-right">Okay for pets!!!</p>
                     :<p class="text-right">Don't torture your pets taking them there!!!!!!</p>
-                }
+                } */}
                         <p>
                         <DeleteButton deleteHandler={deleteOneCity}/>
                         <Link to={`/city/edit/${id}`}><button type="button" class="btn btn-secondary btn-sm">Edit</button></Link></p>

@@ -26,7 +26,7 @@ const MoreInfo = (props) =>{
     return (
         <div>
         <Header 
-            appName = {"NoTerraIncognita"}
+            appName = {"YOUR Travel Planner"}
             titleText = {"Explore Your Next Dream Vacation Destination"}
             link={"/new"}
             linkText={""}
@@ -75,7 +75,7 @@ const MoreInfo = (props) =>{
   </tbody>
 </table>
 
-<img style = {{objectFit: "cover", height: "100px", margin: "20px"}} src={country.flag} alt = "Country flag"/>
+<img style = {{objectFit: "cover", height: "100px", margin: "20px", border: "1px solid black"}} src={country.flag} alt = "Country flag"/>
 
 </div>
            

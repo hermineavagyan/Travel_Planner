@@ -8,7 +8,7 @@ const Navbar = (props) => {
         height: 65px;
         display: flex;
         justify-content: flex-end;
-        margin: 30px 0;
+        margin: 2% 2%;
         padding: 0.2rem calc((100vw - 1000px) / 2);
         `;  
 

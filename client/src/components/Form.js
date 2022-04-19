@@ -5,8 +5,10 @@ const Form = (props)=>{
     const {submitHandler, onChangeHandler, city, errors, buttonText } = props;
 
     return(
+        
         <div>
-            <form style = {{margin: "20%"}}  class = "form-control" onSubmit={submitHandler}>
+        <div  className = "formStyle">
+            <form  class = "form-control" onSubmit={submitHandler}>
 
                 <div>
                     <label for="exampleFormControlInput1">Name</label>
@@ -35,6 +37,16 @@ const Form = (props)=>{
                     {
                         errors.funFact ?
                             <span>{errors.funFact.message}</span>
+                            : null
+                    }
+                </div>
+                <div>
+                    <label for="exampleFormControlInput1">Info</label>
+                    <input class="form-control" name="cityInfo" value={city.cityInfo} onChange={(e) => onChangeHandler(e)} type="text" />
+                    <br />
+                    {
+                        errors.cityInfo ?
+                            <span>{errors.cityInfo.message}</span>
                             : null
                     }
                 </div>
@@ -68,7 +80,7 @@ const Form = (props)=>{
                     }
                 </div>
 
-                <div>
+                {/* <div>
                     <label for="exampleFormControlInput1">Pet Friendly?</label>
                     <input class="form-control" checked={city.petFriendly} name="petFriendly" onChange={onChangeHandler} type="checkbox" />
                     <br />
@@ -77,7 +89,7 @@ const Form = (props)=>{
                             <span>{errors.petFriendly.message}</span>
                             : null
                     }
-                </div>
+                </div> */}
                 {/* <div>
                     <label>Year Built</label>
                     <input name="yearBuilt" value={city.yearBuilt} onChange={onChangeHandler} type="number" />
@@ -90,9 +102,10 @@ const Form = (props)=>{
                 </div> */}
 
                 <button>{buttonText}</button>
-
+               
             </form>
-
+            
+            </div>    
         </div>
     )
 }

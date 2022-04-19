@@ -8,7 +8,7 @@ const LogReg = (props) => {
 
     return (
         <div>
-            <span style = {{color: '#3EAAA7', fontWeight: '700', fontSize: "30px"}}>
+            <span style = {{color: '#2F153F', fontWeight: '700', fontSize: "30px"}}>
                 <Typewriter 
                     // options={{
                     // autoStart: true,
@@ -17,7 +17,7 @@ const LogReg = (props) => {
                     // }} 
                     onInit={(typewriter)=> {
                     typewriter
-                    .typeString("NoTerraIncognita")
+                    .typeString("YOUR Travel Planner")
                     .pauseFor(1000)
                     .deleteAll()
                     .typeString("Welcomes You")

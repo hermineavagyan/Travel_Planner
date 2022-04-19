@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "./Header";
+import Navbar from "./Navbar";
 import Form from "./Form";
 
 const EditCity = (props) => {
@@ -69,11 +70,23 @@ const EditCity = (props) => {
     return (
         <div>
             <Header 
-            appName = {"NoTerraIncognita"}
+            appName = {"YOUR Travel Planner"}
             titleText = {"Update City"}
-            link={"/home"}
-            linkText={"Home"}
+            link={""}
+            linkText={""}
             />
+            <Navbar
+            home = {"/home"}
+            hText = {"Home"}
+            // profile = {`/user/profile/${user.username}`}
+            profile = {""}
+            pText = {""} 
+            addNew = {"/new"}          
+            addNewText = {"Didn't like what we have? Create yours!"}
+            logout = {"/"}
+            lText = {"Logout"}
+        />
+            
             
             <Form
                 submitHandler = {editSubmitHandler}
