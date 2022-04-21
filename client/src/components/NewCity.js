@@ -1,13 +1,27 @@
 //axios, useEffect, useState, Link
 import React, {useState, useEffect } from "react";
 import axios from "axios";
-import {useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Header from "./Header";
 import Form from "./Form";
 import Navbar from "./Navbar";
+import {Country, State, City} from 'country-state-city'
+import {ICountry, IState, ICity} from 'country-state-city'
 
 const NewCity = (props) => {
+    // const [selectedCountry, setSelectedCountry] = useState("");
 
+    // // const countriesArray = State.getStatesOfCountry('US')
+    // const countriesArray = Country.getAllCountries();
+    // let countries = [];
+    // for (let i = 0; i < countriesArray.length; i++){
+    //     countries.push(countriesArray[i].name);
+    // }
+    //  console.log(countries);
+
+    // const countriesList = Object.keys(countries).map(key => ({
+    //     name: key
+    // }));
     //single state object
     const [newCity, setNewCity] = useState({
         name: "",
@@ -24,6 +38,12 @@ const NewCity = (props) => {
     const [errors, setErrors] = useState({});
     const [user, setUser] = useState({});
     const navigate = useNavigate()
+
+    // function handleCountrySelect(e) {
+    //     console.log("Selected country", e.target.value);
+    //     const countriesSelection = e.target.value;
+    //     setSelectedCountry(countriesSelection);
+    //   }
 
     const newSubmitHandler = (e) => {
         e.preventDefault();
