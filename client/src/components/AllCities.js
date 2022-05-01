@@ -4,17 +4,19 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "./Header";
 import DeleteButton from "./DeleteButton";
-// import { Navigate } from "react-router-dom";
-// import { AnimatedText } from "./AnimatedText";
 import Navbar from "./Navbar";
+import Searchbar from "./Searchbar";
+
+
 
 const AllCities = (props) => {
 
 
     const [cityList, setCityList] = useState([]);
     const [user, setUser] = useState({});
-
+    
     const navigate = useNavigate();
+    const [searchTerm, setSearchTerm] = useState('')
 
     useEffect(() => {
         axios.get("http://localhost:8000/api/cities")
@@ -86,62 +88,58 @@ const AllCities = (props) => {
             logout = {"/"}
             lText = {"Logout"}
         />
-            {/* {
-                cityList.map((city, index) => (
-                <div class="card border-light text-dark bg-light mx-5 my-3"
-                        key={city._id}>
-                        <Link to = {`/user/profile/${city.createdBy?.username}`}>{city.createdBy?.username}</Link>
-                        <Link class="card-header" to={`/city/${city._id}`}> {city.name}</Link>
-                        <img class="card-body" src={city.cityImage} style={{ width: "350px", height: "250px" }} />
-                        <p class="text-right">{city.funFact}</p>
-                        <p>
-                        <DeleteButton deleteHandler={()=>deleteCity(city._id)} />
-                        <Link to={`/city/edit/${city._id}`}><button type="button" class="btn btn-secondary btn-sm">Edit</button></Link></p>
-                </div>
- ))
-            } */}
 
-            {/* {
-                cityList.map((city, index) => (
-                <div class="card"
-                key={city._id}>
-    <img src={city.cityImage} class="card-img-top"  alt="city image"/>
-    <div class="card-body">
-      <h5 class="card-title"><Link to={`/city/${city._id}`}> {city.name}</Link></h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-                ))
-            } */}
+            <div >
+                <form >
+                    <input type="text" placeholder='Search...' onChange={(e)=>{setSearchTerm(e.target.value)}}/>
+                </form>
+            </div>     
             {
-                cityList.map((city, index) => (
-                <div class="card mb-3" style={{maxWidth: "100%"}}
+                cityList.filter((val)=>{
+                    if(searchTerm === ''){
+                        return val
+                    } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())
+                    ){
+                        return val
+                    }
+                })
+
+                .map((city, index) => (
+
+                    
+        <div class="card mb-3" style={{maxWidth: "100%"}}
                 key={city._id}>
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img  style={{marginLeft: 50, marginTop: 20,maxWidth: "250%"}}src={city.cityImage} class="card-img" alt="..."/>
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h3 class="card-title"><Link style = {{color: "#000000"}} to={`/city/${city._id}`}> {city.name}</Link></h3>
-        {/* <p> <Link to = {`/user/profile/${city.createdBy?.username}`}>{city.createdBy?.username}</Link></p> */}
-        <p><h6 small class="text-muted"></h6> This travel destination is created by <h5> <Link to = {`/user/profile/${city.createdBy.username}`}>{city?.createdBy.username}</Link></h5></p>
-        <div className = "cityInfo">
-            <p class="card-text">{city.funFact}</p>
-            <p>{city.cityInfo}</p>
-        </div>
-        
-       <hr style = {{margin: 40, border: 0, backgroundImage: "linear-gradient(to right, rgba(0, 0, 0, 0), rgba(9, 84, 132), rgba(0, 0, 0, 0))", height: 3}}/>
-    
-        <p class="card-text"><small class="text-muted"> <DeleteButton deleteHandler={()=>deleteCity(city._id)} />
-                        <Link to={`/city/edit/${city._id}`}><button style = {{paddingRight: 25}} type="button" class="btn btn-secondary btn-sm">Edit</button></Link></small></p>
-      </div>
-    </div>
-  </div>
-</div>))
-            }
-        </div>
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img  style={{marginLeft: 50, marginTop: 20,maxWidth: "250%"}}src={city.cityImage} class="card-img" alt="..."/>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h3 class="card-title"><Link style = {{color: "#000000"}} to={`/city/${city._id}`}> {city.name}</Link></h3>
+                        <p>
+                        <h6 small class="text-muted"></h6> This travel destination is created by 
+                        <h5> 
+                        <Link to = {`/user/profile/${city.createdBy.username}`}>{city?.createdBy.username}</Link>
+                        </h5>
+                        </p>
+                        <div className = "cityInfo">
+                            <p class="card-text">{city.funFact}</p>
+                            <p>{city.cityInfo}</p>
+                        </div>
+                        
+                        <hr style = {{margin: 40, border: 0, backgroundImage: "linear-gradient(to right, rgba(0, 0, 0, 0), rgba(9, 84, 132), rgba(0, 0, 0, 0))", height: 3}}/>
+                    
+                        <p class="card-text">
+                            <small class="text-muted"> <DeleteButton deleteHandler={()=>deleteCity(city._id)} />
+                            <Link to={`/city/edit/${city._id}`}>
+                            <button style = {{paddingRight: 25}} type="button" class="btn btn-secondary btn-sm">Edit</button>
+                            </Link></small></p>
+                    </div>
+                </div>
+            </div>
+        </div>))
+                    }
+</div>
     )
 }
 export default AllCities;

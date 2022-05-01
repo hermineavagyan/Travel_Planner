@@ -41,15 +41,7 @@ const MoreInfo = (props) =>{
             logout = {"/"}
             lText = {"Logout"}
         />
-        {/* {
-            {city.country.name}?
-            <p>Country Name: {country.name}</p>
-            :<p>This country is not in countries API database</p>
-        } */}
-            {/* <p>Country Name: {country.name}</p>
-            <p>Country Population: {country.population}</p>
-            <p>Country lattidute: {lat}</p>
-            <p>Country longitude: {lng}</p> */}
+      
 <div style = {{margin: "30px"}}>
 <h3>{country.name}</h3>
 <table class="table table-dark table-hover">

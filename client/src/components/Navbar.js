@@ -1,7 +1,9 @@
 import React from 'react'; 
+import { useState } from "react";
 import {Link} from "react-router-dom";
 import styled from 'styled-components';
 const Navbar = (props) => { 
+    
 
     const Div = styled.div`
         background: #e3f2fd;
@@ -32,13 +34,20 @@ const Navbar = (props) => {
         padding: 5px 10px;
         `;
 
-const {home,hText, profile,pText, logout,lText, addNew, addNewText} = props
+const {home,hText, profile,pText, logout,lText, addNew, addNewText,setSearchTerm} = props
+// const[ searchTerm, setSearchTerm] = useState("")
     return ( 
     <div>
         <Div> 
+
             <StyledLink to={addNew} activeStyle>{addNewText}</StyledLink>
             <StyledLink  to={home} activeStyle>{hText}</StyledLink>
-            <StyledLink to={profile} activeStyle>{pText}</StyledLink>      
+            <StyledLink to={profile} activeStyle>{pText}</StyledLink> 
+            {/* <div >
+                <form >
+                    <input type="text" placeholder='Search...' onChange={(e)=>{setSearchTerm(e.target.value)}}/>
+                </form>
+            </div>      */}
         </Div> 
         <Button> 
         <Link style = {{color: "#000000"}}  to={logout}> {lText}</Link> 
