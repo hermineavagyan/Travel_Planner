@@ -34,20 +34,31 @@ const Navbar = (props) => {
         padding: 5px 10px;
         `;
 
-const {home,hText, profile,pText, logout,lText, addNew, addNewText,setSearchTerm} = props
+const {home,hText, list, setList, profile,pText, logout,lText, addNew, addNewText, searchTerm, setSearchTerm} = props
 // const[ searchTerm, setSearchTerm] = useState("")
+// const [list, setList] = useState([])
     return ( 
     <div>
         <Div> 
 
             <StyledLink to={addNew} activeStyle>{addNewText}</StyledLink>
             <StyledLink  to={home} activeStyle>{hText}</StyledLink>
-            <StyledLink to={profile} activeStyle>{pText}</StyledLink> 
+             <StyledLink to={profile} activeStyle>{pText}</StyledLink>
             {/* <div >
                 <form >
                     <input type="text" placeholder='Search...' onChange={(e)=>{setSearchTerm(e.target.value)}}/>
                 </form>
-            </div>      */}
+            </div>  
+
+            {{list}.filter((val)=>{
+                    if({searchTerm} === ''){
+                        return list
+                    } else if (val.name.toLowerCase().match({searchTerm}.toLowerCase())
+                    ){
+                        return val
+                    }
+                })
+            }    */}
         </Div> 
         <Button> 
         <Link style = {{color: "#000000"}}  to={logout}> {lText}</Link> 

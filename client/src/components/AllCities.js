@@ -5,18 +5,16 @@ import { Link, useNavigate } from "react-router-dom";
 import Header from "./Header";
 import DeleteButton from "./DeleteButton";
 import Navbar from "./Navbar";
-import Searchbar from "./Searchbar";
-
-
 
 const AllCities = (props) => {
 
 
     const [cityList, setCityList] = useState([]);
     const [user, setUser] = useState({});
-    
+    // const {searchTerm, setSearchTerm} = props;
     const navigate = useNavigate();
-    const [searchTerm, setSearchTerm] = useState('')
+    //const [searchInput, setSearchInput] = useState('')
+   const [searchTerm, setSearchTerm] = useState('')
 
     useEffect(() => {
         axios.get("http://localhost:8000/api/cities")
@@ -68,9 +66,20 @@ const AllCities = (props) => {
                 console.log(err);
             });
     };
+
+    // const handleChange = (e)=>{
+    //     e.preventDefault();
+    //     setSearchInput(e.target.value);
+    // };
+    // if (searchInput.length>0){
+    //     cityList.filter((city)=>{
+    //         return city.name.match(searchInput)
+    //     })
+    // }
     return (
         
         <div>
+        
 
         <Header 
             appName = {"YOUR Travel Planner"}
@@ -87,24 +96,33 @@ const AllCities = (props) => {
             addNewText = {"Didn't like what we have? Create yours!"}
             logout = {"/"}
             lText = {"Logout"}
+            
         />
-
+         
+        {/* <form>
+            <input 
+            type = "search" 
+            placeholder="Search here" 
+            onChange={handleChange(e)} 
+            value = {searchInput}/></form> */}
             <div >
                 <form >
                     <input type="text" placeholder='Search...' onChange={(e)=>{setSearchTerm(e.target.value)}}/>
                 </form>
             </div>     
-            {
+            
+        {
                 cityList.filter((val)=>{
                     if(searchTerm === ''){
-                        return val
-                    } else if (val.name.toLowerCase().includes(searchTerm.toLowerCase())
+                        return cityList
+                    } else if (val.name.toLowerCase().match(searchTerm.toLowerCase())
                     ){
                         return val
                     }
                 })
 
                 .map((city, index) => (
+
 
                     
         <div class="card mb-3" style={{maxWidth: "100%"}}

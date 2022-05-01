@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "./Navbar";
 import Header from "./Header";
+import {useLoadScript,GoogleMap,LoadScript, Marker} from '@react-google-maps/api'
+
 
 const MoreInfo = (props) =>{
     const {countryName} = useParams();
@@ -70,10 +72,11 @@ const MoreInfo = (props) =>{
 <img style = {{objectFit: "cover", height: "100px", margin: "20px", border: "1px solid black"}} src={country.flag} alt = "Country flag"/>
 
 </div>
-           
 
-           
+<Link to ={`/myMap/${lat}/${lng}/countryName`}>MyMap</Link>
+
         </div>
     )
 }
 export default MoreInfo;
+
