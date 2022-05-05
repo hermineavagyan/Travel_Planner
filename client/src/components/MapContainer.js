@@ -20,7 +20,7 @@ const MapContainer = () => {
     }
     return (
         <LoadScript
-        googleMapsApiKey = "Your_Key">
+        googleMapsApiKey = "Your API key">
             <GoogleMap
             mapContainerStyle={mapStyles}
             zoom={6}

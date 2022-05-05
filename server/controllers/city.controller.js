@@ -69,7 +69,7 @@ const jwt = require ("jsonwebtoken")
                 res.json(updatedCity)
             } catch (err) {
                 console.log("Something went wrong in updateCity()");
-                    res.status(400).json(err) 
+                res.status(400).json(err) 
             }
         },
 
