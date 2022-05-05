@@ -18,6 +18,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password is required"],
         minLength: [8, "Passwords MUST be at least 8 characters"]
+    },
+    cartCount: {
+        type: Number,
+        default:0,
     }
 
 },{timestamps: true})

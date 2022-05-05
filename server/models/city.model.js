@@ -14,6 +14,9 @@ const CitySchema = new mongoose.Schema({
         type: String,
         required: [true, "A city's country is required!!!"],
     },
+    price: {
+        type:String
+    },
     funFact: {
         type: String,
         required: [true, "Tell us something interesting about this city!!!"],
