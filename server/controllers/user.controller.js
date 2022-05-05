@@ -81,42 +81,49 @@ module.exports = {
 
     findAllUsers: async (req, res) => {
         try {
-            const allUsers = User.find()
+            const allUsers =  await User.find()
+            console.log(allUsers)
             res.json(allUsers);
         } catch (err) {
             console.log("Find All Users failed");
             res.json({ message: "Something went wrong in findAll", error: err })
         }
+    },
+
+    findOneUser: async (req, res)=>{
+        try {
+            const oneUser =  await User.findOne({ _id: req.params.id })//the params id MUST MATCH how we write it in our routes!!!
+            //.populate("messages", "content likes")
+            console.log(oneUser);
+            res.json(oneUser);
+        } catch (err) {
+            console.log("findOneUser() failed");
+            res.json({ message: "Something went wrong in findOneUser()", error: err })
+            }
         },
 
-        // getLoggedInUser: (req, res)=>{
+    deleteOneUser: (req, res)=>{
+        User.deleteOne({_id: req.params.id})
+            .then((deletedUser)=>{
+                console.log(deletedUser);
+                res.json(deletedUser);
+            })
+            .catch((err)=>{
+                console.log("deleteOneUser() failed");
+                res.json({ message: "Something went wrong in deleteOneUser()", error: err })
+            })
+    },
+    updateUser: async (req, res) => {
+        try {
+            const update = await User.findOneAndUpdate({_id: req.params.id},
+                req.body,
+                {new: true, runValidators: true}
+                )
+            res.json(update)
+        } catch (err) {
+            console.log("Something went wrong in updateUser")
+            res.status(400).json({message: "Something went wrong in update", error: err})
+        }
+    },
 
-        //     // const decodedJWT = jwt.decode(req.cookies.usertoken,{
-        //     //     complete: true
-        //     // })
-
-    
-        //     User.findOne({_id: req.jwtpayload.id})
-        //         .then((user)=>{
-        //             console.log(user);
-        //             res.json(user)
-        //         })
-        //         .catch((err)=>{
-        //             console.log(err);
-        //         })
-        //     },
-        
-        //     findAllUsers: (req, res) => {
-        //         //use the model to connect to the collection and 
-        //         //find/return all documents from our games collection  
-        //         User.find()
-        //             .then((allUsers) => {
-        //                 res.json(allUsers);
-        //             })
-        //             .catch((err) => {
-        //                 console.log("Find All Users failed");
-        //                 res.json({ message: "Something went wrong in findAll", error: err })
-        //             })
-        //     },
-    
 }

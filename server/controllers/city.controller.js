@@ -2,31 +2,31 @@ const City = require("../models/city.model");
 const jwt = require ("jsonwebtoken")
 
     module.exports = {
-
+        
         findAllCities: async (req, res)=>{
             try {
                 const allCities =  await City.find({})
                 .populate("createdBy", "username email")
                 .populate("messages", "content likes _id")
                 res.json(allCities)
-                } catch (err) {
-                    console.log("Find all pets has failed!");
-                    res.json({ message: "Something went wrong in findAllCities()", error: err })
+            } catch (err) {
+                console.log("Find all pets has failed!");
+                res.json({ message: "Something went wrong in findAllCities()", error: err })
                 }   
             },
-            createNewCity: async (req, res)=>{
-                try {
-                    const newCityObject = new City(req.body)
-                    const decodedJWT = jwt.decode(req.cookies.usertoken, {complete: true})
-                    newCityObject.createdBy = decodedJWT.payload.id;
-                    const newCity = await newCityObject.save()
-                    console.log(newCity);
-                    res.json(newCity);
-                } catch (err) {
-                    console.log("Something went wrong in createNewCity()");
-                    res.status(400).json(err)
-                }
-            },
+        createNewCity: async (req, res)=>{
+            try {
+                const newCityObject = new City(req.body)
+                const decodedJWT = jwt.decode(req.cookies.usertoken, {complete: true})
+                newCityObject.createdBy = decodedJWT.payload.id;
+                const newCity = await newCityObject.save()
+                console.log(newCity);
+                res.json(newCity);
+            } catch (err) {
+                console.log("Something went wrong in createNewCity()");
+                res.status(400).json(err)
+            }
+        },
 
         findOneCity: async (req, res)=>{
             try {
