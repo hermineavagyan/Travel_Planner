@@ -45,7 +45,7 @@ function App() {
           <Route element={<Profile />} path="/user/profile/:username" />
           <Route element={<AllMessages socket={socket}/>} path="/city/:id/:name" />
           <Route path = "/country/:countryName" element = {<MoreInfo/>}></Route>
-          <Route path = "/myMap/:lat/:lng/:country_name" element = {<MapContainer/>}></Route>
+          <Route path = "/myMap/:lat/:lng/:countryName" element = {<MapContainer/>}></Route>
         </Routes>
       
       </div>
