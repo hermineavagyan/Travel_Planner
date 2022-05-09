@@ -16,6 +16,16 @@ module.exports = {
                 res.json({ message: "Something went wrong in findAll", error: err })
             })
     },
+    deleteOneMessage: async (req, res)=>{
+        try {
+            const deletedMessage = await Message.deleteOne({_id: req.params.id})
+            console.log(deletedMessage);
+            res.json(deletedMessage);
+        } catch (err) {
+            console.log("deleteOneMessage() failed");
+            res.json({ message: "Something went wrong in deleteOneMessage()", error: err })
+            }
+    },
     // deleteOneMessage: (req, res)=>{
     //    Message.deleteOne({name: req.params.name})
     //    console.log(req.params.name)
