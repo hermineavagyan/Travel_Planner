@@ -9,6 +9,7 @@ import AllMessages from './components/AllMessages';
 import MoreInfo from './components/MoreInfo';
 import MapContainer from './components/MapContainer';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MyContext from "./components/MyContext";
 import {useState, useEffect} from "react";
 import io from 'socket.io-client'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -17,6 +18,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 function App() {
 
   const [socket, setSocket] = useState(()=> io(":8000"))
+  const [cartCount, setCartCount] = useState(0);
   
 
   useEffect(()=>{
@@ -35,18 +37,20 @@ function App() {
     
       
       <div className="App">
-        <Routes>
-          <Route element={<LogReg/>} path="/" />
-          <Route element={<AllCities/>} path="/home" />
-          <Route element={<NewCity />} path="/new" />
-          {/* This id param will be used and sent as a req.param in our request to the server! */}
-          <Route element={<OneCity  socket={socket} />} path="/city/:id" />
-          <Route element={<EditCity />} path="/city/edit/:id" />
-          <Route element={<Profile />} path="/user/profile/:username" />
-          <Route element={<AllMessages socket={socket}/>} path="/city/:id/:name" />
-          <Route path = "/country/:countryName" element = {<MoreInfo/>}></Route>
-          <Route path = "/myMap/:lat/:lng/:countryName" element = {<MapContainer/>}></Route>
-        </Routes>
+        <MyContext.Provider value={{cartCount, setCartCount}}>
+          <Routes>
+            <Route element={<LogReg/>} path="/" />
+            <Route element={<AllCities/>} path="/home" />
+            <Route element={<NewCity />} path="/new" />
+            {/* This id param will be used and sent as a req.param in our request to the server! */}
+            <Route element={<OneCity  socket={socket} />} path="/city/:id" />
+            <Route element={<EditCity />} path="/city/edit/:id" />
+            <Route element={<Profile />} path="/user/profile/:username" />
+            <Route element={<AllMessages socket={socket}/>} path="/city/:id/:name" />
+            <Route path = "/country/:countryName" element = {<MoreInfo/>}></Route>
+            <Route path = "/myMap/:lat/:lng/:countryName" element = {<MapContainer/>}></Route>
+          </Routes>
+        </MyContext.Provider>
       
       </div>
     

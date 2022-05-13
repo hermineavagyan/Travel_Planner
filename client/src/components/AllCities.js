@@ -1,20 +1,21 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "./Header";
 import DeleteButton from "./DeleteButton";
+import MyContext from "./MyContext";
 import Navbar from "./Navbar";
 
 const AllCities = (props) => {
 
-
+    const context = useContext(MyContext);
     const [cityList, setCityList] = useState([]);
     const [user, setUser] = useState({});
     // const {searchTerm, setSearchTerm} = props;
     const navigate = useNavigate();
     //const [searchInput, setSearchInput] = useState('')
-   const [searchTerm, setSearchTerm] = useState('')
+    const [searchTerm, setSearchTerm] = useState('')
 
     useEffect(() => {
         axios.get("http://localhost:8000/api/cities")
@@ -98,7 +99,6 @@ const AllCities = (props) => {
             lText = {"Logout"}
             
         />
-         
         {/* <form>
             <input 
             type = "search" 
