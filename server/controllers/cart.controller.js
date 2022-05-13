@@ -3,7 +3,7 @@ const User = require("../models/user.model")
 const jwt = require('jsonwebtoken');
 
 module.exports = {
-    tourCreate: (req, res) => {
+    createTour: (req, res) => {
         const newTourObject = new Cart(req.body);
         const decodedJWT = jwt.decode(req.cookies. usertoken,{
             complete: true
@@ -15,7 +15,7 @@ module.exports = {
             res.json(newTour);
         })
         .catch((err) => {
-            console.log('Something went wrong in tourCreate');
+            console.log('Something went wrong in createTour');
             res.status(400).json(err);
         });
     },

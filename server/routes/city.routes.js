@@ -8,5 +8,5 @@ app.get("/api/cities/:id", CityController.findOneCity);
 app.get("/api/citiesbyuser/:username", authenticate, CityController.findAllCitiesByUser);
 app.delete("/api/cities/:id", CityController.deleteOneCity);
 app.put("/api/cities/:id", CityController.updateCity);
-//app.put("/api/cities/:id", CityController.likeCity);
+
 }
