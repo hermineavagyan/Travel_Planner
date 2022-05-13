@@ -46,16 +46,15 @@ const Form = (props)=>{
                 <select
 
             name="country"
-          onChange={e => handleCountrySelect(e)}
-    value={selectedCountry}
-        //value = {city.country}
-          >
-          <option value="">Select the country</option>
-          {countries.map((country, key) => (
-            <option key={key} value={country.name}>
-              {country.name}
-            </option>
-          ))}
+            onChange={e => handleCountrySelect(e)}
+            value={selectedCountry}
+            >
+            <option value="">Select the country</option>
+            {countries.map((country, key) => (
+                <option key={key} value={country.name}>
+                {country.name}
+                </option>
+            ))}
         </select>
                 <div>
                     {/* <label for="exampleFormControlInput1">Country</label>
@@ -84,6 +83,16 @@ const Form = (props)=>{
                     {
                         errors.cityInfo ?
                             <span>{errors.cityInfo.message}</span>
+                            : null
+                    }
+                </div>
+                <div>
+                    <label for="exampleFormControlInput1">Price</label>
+                    <input class="form-control" name="price" value={city.price} onChange={(e) => onChangeHandler(e)} type="text" />
+                    <br />
+                    {
+                        errors.price ?
+                            <span>{errors.price.message}</span>
                             : null
                     }
                 </div>

@@ -9,10 +9,12 @@ const EditCity = (props) => {
     const [editCity, setEditCity] = useState({
         name: "",
         country: "",
-        weather: "",
+        price: "",
+        funFact: "",
+        cityInfo: "",
         cityImage: "",
-        petFriendly: false,
-        yearBuilt: ""
+        // petFriendly: false,
+        // yearBuilt: ""
     })
 
     const [errors, setErrors] = useState({});

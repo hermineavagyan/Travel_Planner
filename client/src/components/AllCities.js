@@ -143,6 +143,7 @@ const AllCities = (props) => {
                         <div className = "cityInfo">
                             <p class="card-text">{city.funFact}</p>
                             <p>{city.cityInfo}</p>
+                            <p>{city.price}</p>
                         </div>
                         
                         <hr style = {{margin: 40, border: 0, backgroundImage: "linear-gradient(to right, rgba(0, 0, 0, 0), rgba(9, 84, 132), rgba(0, 0, 0, 0))", height: 3}}/>

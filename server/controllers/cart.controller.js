@@ -23,7 +23,7 @@ module.exports = {
     findAllToursInCart: async (req, res) => {
         try{
             const allCartTours = await Cart.find()
-            res.json(allCartProducts);
+            res.json(allCartTours);
                 }
             catch(err){
                 console.log("Find All Cart tours failed");

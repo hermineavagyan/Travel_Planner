@@ -26,13 +26,15 @@ const NewCity = (props) => {
     const [newCity, setNewCity] = useState({
         name: "",
         country: "",
+        price: "",
         funFact: "",
+        cityInfo: "",
         cityImage: "",
-        petFriendly: false
+        // petFriendly: false
         // messages: {},
         // createdBy: {}
     },
-   
+
     )
 
     const [errors, setErrors] = useState({});

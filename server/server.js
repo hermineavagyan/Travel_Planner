@@ -25,6 +25,7 @@ require("./config/mongoose.config")
 require("./routes/city.routes")(app)
 require("./routes/user.routes")(app)
 require("./routes/message.routes")(app);
+require("./routes/cart.routes")(app)
 
 
 
