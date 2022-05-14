@@ -51,18 +51,24 @@ const AllCities = (props) => {
             })
     }, [])
 
-    const incrementCart = async(e,index)=>{
+    const incrementCart = async (e,index) => {
+        e.preventDefault();
         try {
             const res = await axios.get("http://localhost:8000/api/users", {withCredentials: true})
+            // const res = await axios.get(`http://localhost:8000/api/users${user._id}`)
                 setUser(res.data)
+                // context.setCartCount(user.cartCount)
                 context.setCartCount(context.cartCount +=1);
             await axios.put(`http://localhost:8000/api/users/${user._id}`,
-                {cartCount:context.cartCount,},{withCredentials: true})
+                // {cartCount:context.cartCount,},{withCredentials: true})
+                {cartCount:context.cartCount,})
             await axios.post("http://localhost:8000/api/addToCart", 
                 {
                     "tourName":`${cityList[index].name}`,
                     "tourImage":`${cityList[index].cityImage}`,
-                    "price":`${cityList[index].price}`,
+                    "tourPrice":`${cityList[index].price}`,
+                    // "user": `${user._id}`
+                    "user": user._id
                     
                 },{withCredentials: true})
         } catch (err) {
@@ -89,20 +95,8 @@ const AllCities = (props) => {
             });
     };
 
-    // const handleChange = (e)=>{
-    //     e.preventDefault();
-    //     setSearchInput(e.target.value);
-    // };
-    // if (searchInput.length>0){
-    //     cityList.filter((city)=>{
-    //         return city.name.match(searchInput)
-    //     })
-    // }
     return (
-        
         <div>
-        
-
         <Header 
             appName = {"YOUR Travel Planner"}
             titleText = {"Explore Your Next Dream Vacation Destination"}
@@ -120,12 +114,6 @@ const AllCities = (props) => {
             lText = {"Logout"}
             
         />
-        {/* <form>
-            <input 
-            type = "search" 
-            placeholder="Search here" 
-            onChange={handleChange(e)} 
-            value = {searchInput}/></form> */}
             <div >
                 <form >
                     <input type="text" placeholder='Search...' onChange={(e)=>{setSearchTerm(e.target.value)}}/>
@@ -144,8 +132,6 @@ const AllCities = (props) => {
 
                 .map((city, index) => (
 
-
-                    
         <div class="card mb-3" style={{maxWidth: "100%"}}
                 key={city._id}>
             <div class="row no-gutters">
@@ -166,7 +152,8 @@ const AllCities = (props) => {
                             <p>{city.cityInfo}</p>
                             <p>{city.price}</p>
                             <button id={index}  aria-label="add to shopping cart" onClick={(e)=>incrementCart(e, index)}>
-                            </button>    
+                            Add to cart </button>    
+                            {user.cartCount}
                         </div>
                         
                         <hr style = {{margin: 40, border: 0, backgroundImage: "linear-gradient(to right, rgba(0, 0, 0, 0), rgba(9, 84, 132), rgba(0, 0, 0, 0))", height: 3}}/>

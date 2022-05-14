@@ -71,22 +71,11 @@ module.exports = {
 
     getLoggedInUser: async (req, res)=>{
         try {
-            const user =  User.findOne({_id: req.jwtpayload.id})
+            const user =  await User.findOne({_id: req.jwtpayload.id})
             console.log(user);
             res.json(user)
         } catch (err) {
             console.log(err);
-        }
-    },
-
-    findAllUsers: async (req, res) => {
-        try {
-            const allUsers =  await User.find()
-            console.log(allUsers)
-            res.json(allUsers);
-        } catch (err) {
-            console.log("Find All Users failed");
-            res.json({ message: "Something went wrong in findAll", error: err })
         }
     },
 
@@ -101,6 +90,18 @@ module.exports = {
             res.json({ message: "Something went wrong in findOneUser()", error: err })
             }
         },
+
+    findAllUsers: async (req, res) => {
+        try {
+            const allUsers =  await User.find()
+            console.log(allUsers)
+            res.json(allUsers);
+        } catch (err) {
+            console.log("Find All Users failed");
+            res.json({ message: "Something went wrong in findAll", error: err })
+        }
+    },
+
 
     deleteOneUser: (req, res)=>{
         User.deleteOne({_id: req.params.id})
