@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate } from 'react-router-dom';
+import Typewriter from "typewriter-effect";
 
 
 const Login = (props) => {
@@ -35,6 +36,20 @@ const Login = (props) => {
 
     return (
         <div class="card border-light text-dark bg-light m-5">
+        <div>
+            <span style = {{color: '#2F153F', fontWeight: '700', fontSize: "30px"}}>
+                <Typewriter 
+                    onInit={(typewriter)=> {
+                    typewriter
+                    .typeString("YOUR Travel Planner")
+                    .pauseFor(1000)
+                    .deleteAll()
+                    .typeString("Welcomes You")
+                    .start();
+                    }}
+                />
+            </span>
+        </div>
         <div class="card-body">
         <div class="mb-3 row">
         <div class="card-header">Login</div>
@@ -60,8 +75,11 @@ const Login = (props) => {
                     />
                     
                 </div>
-                <button type="submit" class="btn btn-success">Log in</button>
-                <div id="emailHelp" class="form-text">Don't have an account yet? Register below</div>
+                <div style={{display: "flex", justifyContent: "spaceBetween"}}>
+                    <Link to = {"/register"}>Create account</Link>
+                    <button type="submit" class="btn btn-success">Log in</button>
+                </div>
+                
             </form>
         </div>
         </div>

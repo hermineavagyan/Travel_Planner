@@ -10,11 +10,6 @@ const LogReg = (props) => {
         <div>
             <span style = {{color: '#2F153F', fontWeight: '700', fontSize: "30px"}}>
                 <Typewriter 
-                    // options={{
-                    // autoStart: true,
-                    // delay: 75,
-                    // loop: true,
-                    // }} 
                     onInit={(typewriter)=> {
                     typewriter
                     .typeString("YOUR Travel Planner")
@@ -24,7 +19,6 @@ const LogReg = (props) => {
                     .start();
                     }}
                 />
-               
             </span>
             <Login />
             <Register />

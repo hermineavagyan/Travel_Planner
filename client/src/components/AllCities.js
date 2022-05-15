@@ -119,7 +119,7 @@ const AllCities = (props) => {
                     <input type="text" placeholder='Search...' onChange={(e)=>{setSearchTerm(e.target.value)}}/>
                 </form>
             </div>     
-            
+            <p>The cart count is   {user.cartCount}</p>
         {
                 cityList.filter((val)=>{
                     if(searchTerm === ''){
@@ -153,7 +153,6 @@ const AllCities = (props) => {
                             <p>{city.price}</p>
                             <button id={index}  aria-label="add to shopping cart" onClick={(e)=>incrementCart(e, index)}>
                             Add to cart </button>    
-                            {user.cartCount}
                         </div>
                         
                         <hr style = {{margin: 40, border: 0, backgroundImage: "linear-gradient(to right, rgba(0, 0, 0, 0), rgba(9, 84, 132), rgba(0, 0, 0, 0))", height: 3}}/>

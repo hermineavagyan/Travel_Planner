@@ -1,5 +1,7 @@
 import './App.css';
 import LogReg from './views/LogReg';
+import Login from './components/Login';
+import Register from './components/Register';
 import Profile from './components/Profile';
 import OneCity from './components/OneCity';
 import AllCities from './components/AllCities';
@@ -39,7 +41,9 @@ function App() {
       <div className="App">
         <MyContext.Provider value={{cartCount, setCartCount}}>
           <Routes>
-            <Route element={<LogReg/>} path="/" />
+            {/* <Route element={<LogReg/>} path="/" /> */}
+            <Route element={<Login/>} path="/" />
+            <Route element={<Register/>} path="/register" />
             <Route element={<AllCities/>} path="/home" />
             <Route element={<NewCity />} path="/new" />
             {/* This id param will be used and sent as a req.param in our request to the server! */}
