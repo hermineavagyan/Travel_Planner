@@ -1,0 +1,146 @@
+:root {
+    --black: #1B1927;
+    --indigo: #956FFF;
+    --indigo-faded: rgba(149, 111, 255, 0.5);
+    --pink: #E57CF2;
+    --font-color: #DDD;
+    --main-font: 'Roboto', sans-serif;
+   }
+   body {
+    padding:0;
+    margin: 0;
+    font-family: var(--main-font);
+    background: var(--black);
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    scroll-behavior: smooth;
+   }
+   h5 {
+    color: white;
+    
+    text-transform: uppercase;
+    font-size: 0.5em;
+    font-weight: 200px;
+   }
+   p {
+    font-size: 0.8em;
+    color: var(--font-color);
+   }
+   #name-demo {
+    color: #FF0000;
+   }
+   .home-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('https://i.pinimg.com/originals/45/3d/81/453d816d7d25d5a4aa075a8c64c79818.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    animation: bg 10s linear infinite;
+   }
+   @keyframes bg {
+   
+   /* 0% {
+    background-image: url('https://www.wallpaperup.com/uploads/wallpapers/2016/06/09/980778/198ff9cc76f5a86ad1de61447a01a57b.jpg');
+   } */
+   50% {
+    background-image: url('https://www.wallpaperup.com/4268/Purplerough.html');
+   }
+   /* 100% {
+   background-image: url('https://www.wallpaperup.com/uploads/wallpapers/2016/06/09/980778/198ff9cc76f5a86ad1de61447a01a57b.jpg');
+   }  */
+   
+   }
+   .home-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+   background: linear-gradient(185deg, rgba(5,5,5,0) 0%, rgba(50,50,61,0.6913953081232493) 48%, rgba(12,12,13,1) 93%);
+   
+   }
+   .account-box {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    height: 60vh;
+    width: 400px;
+    border-radius: 15px;
+    border: 0.1px solid rgba(100,100,100);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--indigo);
+   }
+   header {
+    width: 30vw;
+    max-height: 15%;
+    display: flex;
+    justify-content: center;
+   }
+   /* #logo {
+    height: 100%;
+    width: auto;
+   } */
+   ul {
+    list-style-type: none;
+    text-decoration: none;
+   }
+   li {
+    padding: 3px;
+    border-radius: 10px;
+    border: 1px solid var(--black);
+    line-height: 1.5em;
+    margin-left: -30px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    font-size: 0.8em;
+    color: var(--black);
+    width: 18vw;
+   }
+   input {
+    background: var(--indigo);
+    border: none;
+   }
+   input[type="text"], input[type="password"] {
+    color: var(--black);
+    font-size: 1em;
+   }
+   input::placeholder {
+    color: var(--black);
+    font-size: 1em;
+   }
+   input:focus, textarea:focus, select:focus {
+    outline: none;
+   }
+   .sign-up {
+    background: var(--black);
+    color: var(--font-color);
+    text-align: center;
+    font-size: 0.9em;
+    border: none;
+    border-radius: 10px;
+    /* margin-bottom: 40%; */
+    padding: 10px;
+    width: 100%;
+    transition: all .3s ease;
+   }
+   .sign-up:hover {
+    background: var(--font-color);
+    color: var(--black);
+    cursor: pointer;
+   }
+   @media screen and (max-width:600px) {
+    .account-box {
+    min-width: 80%;
+    height: 75vh;
+   }
+   li {
+    width: 45vw;
+   }
+   
+   }
+   
+   

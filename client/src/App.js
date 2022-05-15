@@ -1,6 +1,6 @@
 import './App.css';
 import LogReg from './views/LogReg';
-import Login from './components/Login';
+import Login1 from './components/Login1';
 import Register from './components/Register';
 import Profile from './components/Profile';
 import OneCity from './components/OneCity';
@@ -42,7 +42,7 @@ function App() {
         <MyContext.Provider value={{cartCount, setCartCount}}>
           <Routes>
             {/* <Route element={<LogReg/>} path="/" /> */}
-            <Route element={<Login/>} path="/" />
+            <Route element={<Login1/>} path="/" />
             <Route element={<Register/>} path="/register" />
             <Route element={<AllCities/>} path="/home" />
             <Route element={<NewCity />} path="/new" />

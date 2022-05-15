@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {Link, useNavigate } from 'react-router-dom';
 import Typewriter from "typewriter-effect";
+import './login.css'
 
 
 const Login = (props) => {
@@ -35,7 +36,11 @@ const Login = (props) => {
     };
 
     return (
+       
         <div class="card border-light text-dark bg-light m-5">
+       
+       
+    
         <div>
             <span style = {{color: '#2F153F', fontWeight: '700', fontSize: "30px"}}>
                 <Typewriter 
@@ -50,10 +55,12 @@ const Login = (props) => {
                 />
             </span>
         </div>
+        <div className = "home-page">
+        <div className="account-box">
         <div class="card-body">
         <div class="mb-3 row">
         <div class="card-header">Login</div>
-            
+        
             <p className="error-text">{errorMessage ? errorMessage : ""}</p>
             <form onSubmit={login}>
                 <div>
@@ -82,6 +89,9 @@ const Login = (props) => {
                 
             </form>
         </div>
+        
+    </div>
+    </div>
         </div>
         </div>
     );
