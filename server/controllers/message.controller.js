@@ -26,19 +26,7 @@ module.exports = {
             res.json({ message: "Something went wrong in deleteOneMessage()", error: err })
             }
     },
-    // deleteOneMessage: (req, res)=>{
-    //    Message.deleteOne({name: req.params.name})
-    //    console.log(req.params.name)
-    //         .then((deletedMessage)=>{
-    //             console.log(deletedMessage); 
-    //             res.json(deletedMessage);
-    //         })
-    //         .catch((err)=>{
-    //             console.log("deleteOneMessage() failed");
-    //             res.json({ message: "Something went wrong in deleteOneMessage()", error: err })
-    //         })
-    // },
-
+    
     createNewMessage:  (req, res)=>{
 
             const newMessageObject = new Message(req.body)
