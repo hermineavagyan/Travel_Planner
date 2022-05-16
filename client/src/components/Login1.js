@@ -6,6 +6,12 @@ import Header from "./Header";
 import './login.css'
 
 
+const linkStyle = {
+    margin: "1rem",
+    textDecoration: "none",
+    color: 'black'
+};
+
 const Login1 = (props) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -89,7 +95,7 @@ id="mail"/>
 </ul>
 <button type = "submit" class = "sign-up" onclick="validateName()">Login</button>
 <hr></hr>
-<Link to = {"/register"}>Create account</Link>
+<Link to = {"/register"} style = {linkStyle}> Create account</Link>
 
 </form>
 </div>
