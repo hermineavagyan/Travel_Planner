@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {Link, useNavigate } from 'react-router-dom';
-import Typewriter from "typewriter-effect";
+import { Link, useNavigate } from 'react-router-dom';
+//import Typewriter from "typewriter-effect";
 import Header from "./Header";
-import './login.css'
+//import './login.css'
 
 
 const linkStyle = {
@@ -43,67 +43,49 @@ const Login1 = (props) => {
     };
 
     return (
-     <div>
-     <Header 
-            appName = {"YOUR Travel Planner"}
-            titleText = {""}
-            link={""}
-            linkText={""}
+        <div>
+            <Header
+                appName={"YOUR Travel Planner"}
+                titleText={""}
+                link={""}
+                linkText={""}
             />
-       {/* <div>
-            <span style = {{color: '#2F153F', fontWeight: '700', fontSize: "30px"}}>
-                <Typewriter 
-                    onInit={(typewriter)=> {
-                    typewriter
-                    .typeString("YOUR Travel Planner")
-                    .pauseFor(1000)
-                    .deleteAll()
-                    .typeString("Welcomes You")
-                    .start();
-                    }}
-                />
-            </span>
-        </div> */}
-       
-        
-        <div className="home-page-wrapper">
-        
-<div className="home-page">
-<div className="account-box">
-<h5>Login</h5>
-<header>
+            {/* <div className="home-page-wrapper"> */}
+            <div>
 
-</header>
-{/* <p><b>Xloto</b> Find your music fast!</p> */}
-<p className="error-text">{errorMessage ? errorMessage : ""}</p>
-<form onSubmit={login}>
-<ul>
-<li>
+                <div className="home-page">
+                    <div className="account-box">
+                        <h5>Login</h5>
 
-<input type="text" 
-placeholder="Email"
-name="email" 
-value={email}
-onChange={(e) => setEmail(e.target.value)}
-id="mail"/>
-</li>
-<li><input type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)} placeholder="Password" id="pass"/>
-</li>
-</ul>
-<button type = "submit" class = "sign-up" onclick="validateName()">Login</button>
-<hr></hr>
-<Link to = {"/register"} style = {linkStyle}> Create account</Link>
+                        <p className="error-text">{errorMessage ? errorMessage : ""}</p>
+                        <form onSubmit={login}>
+                            <ul>
+                                <li>
+                                    <input type="text"
+                                        placeholder="Email"
+                                        name="email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        id="mail" />
+                                </li>
+                                <li><input type="password"
+                                    name="password"
+                                    value={password}
+                                    onChange={(e) =>
+                                        setPassword(e.target.value)}
+                                    placeholder="Password"
+                                    id="pass" />
+                                </li>
+                            </ul>
+                            <button type="submit" class="sign-up" onclick="validateName()">Login</button>
+                            <Link to={"/register"} style={linkStyle}> Create account</Link>
+                        </form>
+                    </div>
 
-</form>
-</div>
+                </div>
+            </div>
 
-</div>
-</div>
-
-</div>
-);
+        </div>
+    );
 };
 export default Login1;

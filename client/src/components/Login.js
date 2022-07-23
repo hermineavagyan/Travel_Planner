@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Typewriter from "typewriter-effect";
 import './login.css'
 
@@ -36,63 +36,63 @@ const Login = (props) => {
     };
 
     return (
-       
+
         <div class="card border-light text-dark bg-light m-5">
-       
-       
-    
-        <div>
-            <span style = {{color: '#2F153F', fontWeight: '700', fontSize: "30px"}}>
-                <Typewriter 
-                    onInit={(typewriter)=> {
-                    typewriter
-                    .typeString("YOUR Travel Planner")
-                    .pauseFor(1000)
-                    .deleteAll()
-                    .typeString("Welcomes You")
-                    .start();
-                    }}
-                />
-            </span>
-        </div>
-        <div className = "home-page">
-        <div className="account-box">
-        <div class="card-body">
-        <div class="mb-3 row">
-        <div class="card-header">Login</div>
-        
-            <p className="error-text">{errorMessage ? errorMessage : ""}</p>
-            <form onSubmit={login}>
-                <div>
-                    <label for = "inputEmail" class="col-sm-2 col-form-label">Email</label>
-                    <input class="col-sm-5"
-                        type="text"
-                        name="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+
+
+
+            <div>
+                <span style={{ color: '#2F153F', fontWeight: '700', fontSize: "30px" }}>
+                    <Typewriter
+                        onInit={(typewriter) => {
+                            typewriter
+                                .typeString("YOUR Travel Planner")
+                                .pauseFor(1000)
+                                .deleteAll()
+                                .typeString("Welcomes You")
+                                .start();
+                        }}
                     />
+                </span>
+            </div>
+            <div className="home-page">
+                <div className="account-box">
+                    <div class="card-body">
+                        <div class="mb-3 row">
+                            <div class="card-header">Login</div>
+
+                            <p className="error-text">{errorMessage ? errorMessage : ""}</p>
+                            <form onSubmit={login}>
+                                <div>
+                                    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                                    <input class="col-sm-5"
+                                        type="text"
+                                        name="email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                    />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                                    <input class="col-sm-5"
+                                        type="password"
+                                        name="password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                    />
+
+                                </div>
+                                <div style={{ display: "flex", justifyContent: "spaceBetween" }}>
+                                    <Link to={"/register"}>Create account</Link>
+                                    <button type="submit" class="btn btn-success">Log in</button>
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for = "inputPassword" class="col-sm-2 col-form-label">Password</label>
-                    <input class="col-sm-5"
-                        type="password"
-                        name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    
-                </div>
-                <div style={{display: "flex", justifyContent: "spaceBetween"}}>
-                    <Link to = {"/register"}>Create account</Link>
-                    <button type="submit" class="btn btn-success">Log in</button>
-                </div>
-                
-            </form>
-        </div>
-        
-    </div>
-    </div>
-        </div>
+            </div>
         </div>
     );
 };

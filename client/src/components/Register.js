@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from "axios";
+//import './login.css'
 
 
 
@@ -120,7 +121,7 @@ const Register = (props) => {
                             />
                         </div>
                         {/* <div className="center"> */}
-                        <Link to={"/login"}> Create account</Link>
+                        <Link to={"/"}> Login</Link>
                         <button type="submit" class="btn btn-primary">Register</button>
                         <div id="emailHelp" class="form-text">Already registered? Login above</div>
                         {/* </div> */}
