@@ -13,41 +13,39 @@ const EditCity = (props) => {
         funFact: "",
         cityInfo: "",
         cityImage: "",
-        // petFriendly: false,
-        // yearBuilt: ""
     })
 
     const [errors, setErrors] = useState({});
     const { id } = useParams();
     const navigate = useNavigate();
 
-    useEffect(()=>{
+    useEffect(() => {
         axios.get(`http://localhost:8000/api/cities/${id}`)
-            .then((res)=>{
+            .then((res) => {
                 console.log(res);
                 console.log(res.data);
                 setEditCity(res.data);
             })
-            .catch((err)=>console.log(err))
-    },[id])
+            .catch((err) => console.log(err))
+    }, [id])
     const editSubmitHandler = (e) => {
         e.preventDefault();
         axios.put(`http://localhost:8000/api/cities/${id}`,
-        editCity    
+            editCity
         )
             .then((res) => {
                 console.log(res);
                 console.log(res.data);
                 navigate("/home");
             })
-            .catch((err) =>{
+            .catch((err) => {
                 console.log(err);
                 console.log(err)
                 console.log("err.response:", err.response);
                 console.log("err.response.data:", err.response.data);
                 console.log("err.response.data.errors:", err.response.data.errors);
                 setErrors(err.response.data.errors);
-            } )
+            })
     }
     const onChangeHandler = (e) => {
 
@@ -71,33 +69,33 @@ const EditCity = (props) => {
 
     return (
         <div>
-            <Header 
-            appName = {"YOUR Travel Planner"}
-            titleText = {"Update City"}
-            link={""}
-            linkText={""}
+            <Header
+                appName={"YOUR Travel Planner"}
+                titleText={"Update City"}
+                link={""}
+                linkText={""}
             />
             <Navbar
-            home = {"/home"}
-            hText = {"Home"}
-            // profile = {`/user/profile/${user.username}`}
-            profile = {""}
-            pText = {""} 
-            addNew = {"/new"}          
-            addNewText = {"Didn't like what we have? Create yours!"}
-            logout = {"/"}
-            lText = {"Logout"}
-        />
-            
-            
-            <Form
-                submitHandler = {editSubmitHandler}
-                city = {editCity}
-                errors  = {errors}
-                buttonText = {"Update City"}
-                onChangeHandler = {onChangeHandler}   
+                home={"/home"}
+                hText={"Home"}
+                // profile = {`/user/profile/${user.username}`}
+                profile={""}
+                pText={""}
+                addNew={"/new"}
+                addNewText={"Didn't like what we have? Create yours!"}
+                logout={"/"}
+                lText={"Logout"}
             />
-        </div> 
+
+
+            <Form
+                submitHandler={editSubmitHandler}
+                city={editCity}
+                errors={errors}
+                buttonText={"Update City"}
+                onChangeHandler={onChangeHandler}
+            />
+        </div>
     )
 }
 

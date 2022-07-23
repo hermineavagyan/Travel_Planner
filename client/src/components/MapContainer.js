@@ -3,16 +3,17 @@ import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/ap
 import { useParams } from "react-router-dom";
 
 const MapContainer = () => {
-    const{lat, lng, countryName, country} = useParams();
-    const [ selected, setSelected ] = useState({});
+    const { lat, lng, countryName, country } = useParams();
+    const [selected, setSelected] = useState({});
 
-    const mapStyles = {        
+    const mapStyles = {
         height: "400px",
-        width: "400px"};
-    
+        width: "400px"
+    };
+
     const defaultCenter = {
-    lat: parseFloat(lat),
-    lng: parseFloat(lng)
+        lat: parseFloat(lat),
+        lng: parseFloat(lng)
     }
 
     const onSelect = item => {
@@ -20,28 +21,28 @@ const MapContainer = () => {
     }
     return (
         <LoadScript
-        googleMapsApiKey = "Your API Key here">
+            googleMapsApiKey="Your app key here">
             <GoogleMap
-            mapContainerStyle={mapStyles}
-            zoom={6}
-            center={defaultCenter}>
-                <Marker 
-                position = {defaultCenter}
-                onClick ={() => onSelect(defaultCenter)}
+                mapContainerStyle={mapStyles}
+                zoom={6}
+                center={defaultCenter}>
+                <Marker
+                    position={defaultCenter}
+                    onClick={() => onSelect(defaultCenter)}
                 />
-            {   
-                selected.defaultCenter && 
-            (   
-                <InfoWindow
-                position={selected.defaultCenter}
-                clickable={true}
-                onCloseClick={() => setSelected({})}>
-                <p>{selected.countryName.position}</p>
-                </InfoWindow>
-                )
-            }
+                {
+                    selected.defaultCenter &&
+                    (
+                        <InfoWindow
+                            position={selected.defaultCenter}
+                            clickable={true}
+                            onCloseClick={() => setSelected({})}>
+                            <p>{selected.countryName.position}</p>
+                        </InfoWindow>
+                    )
+                }
             </GoogleMap>
-        
+
         </LoadScript>
     )
 }
